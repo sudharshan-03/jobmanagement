@@ -9,7 +9,10 @@ const jobRoutes = require('./routes/jobs'); // 👈 Import job route
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://jobmanagement03.netlify.app', // ✅ your frontend domain
+  credentials: true,
+}));
 app.use(express.json()); // 👈 Required for req.body to work
 app.use('/api/jobs', jobRoutes); // 👈 Mount the route
 app.use('/logos', express.static(path.join(__dirname, 'public/logos')));
