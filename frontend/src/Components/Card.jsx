@@ -22,7 +22,7 @@ function Card({ job }) {
     if (diffHours > 0)
       return `${diffHours}h Ago`;
     if (diffMin > 0) return `${diffMin}m Ago`;
-    return `Just now`;
+    return `Now`;
   }
 
   return (
