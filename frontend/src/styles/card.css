@@ -45,6 +45,9 @@
   background-color: #b0d9ff;
   font-size: 14px;
   font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .heading {
