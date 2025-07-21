@@ -18,10 +18,10 @@ function Card({ job }) {
     const diffHours = Math.floor(diffMin / 60);
     const diffDays = Math.floor(diffHours / 24);
 
-    if (diffDays > 0) return `${diffDays} day${diffDays > 1 ? "s" : ""} Ago`;
+    if (diffDays > 0) return `${diffDays}D Ago`;
     if (diffHours > 0)
-      return `${diffHours} hour${diffHours > 1 ? "s" : ""} Ago`;
-    if (diffMin > 0) return `${diffMin} minute${diffMin > 1 ? "s" : ""} Ago`;
+      return `${diffHours}h Ago`;
+    if (diffMin > 0) return `${diffMin}M Ago`;
     return `Just now`;
   }
 
