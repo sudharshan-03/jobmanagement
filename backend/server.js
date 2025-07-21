@@ -13,6 +13,11 @@ app.use(cors({
   origin: 'https://jobmanagement03.netlify.app', // ✅ your frontend domain
   credentials: true,
 }));
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
+});
+
 app.use(express.json()); // 👈 Required for req.body to work
 app.use('/api/jobs', jobRoutes); // 👈 Mount the route
 app.use('/logos', express.static(path.join(__dirname, 'public/logos')));
