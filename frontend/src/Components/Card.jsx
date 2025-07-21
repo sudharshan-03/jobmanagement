@@ -13,7 +13,7 @@ function Card({ job }) {
       <div className="cardContainer">
         <div className="imageContent">
           <div className="imgContainer">
-            <img src={`https://jobmanagement-v40a.onrender.com/api/jobslogos/${job.image.split("/").pop()}`} alt="logo" />
+            <img src={`https://jobmanagement-v40a.onrender.com/logos/${job.image.split("/").pop()}`} alt="logo" />
           </div>
           <div className="time">24h Ago</div>
         </div>
