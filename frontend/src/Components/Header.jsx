@@ -61,7 +61,7 @@ function Header({ toggle, onFilterChange }) {
             value={filters.jobType}
             onChange={handleChange}
           >
-            <option value="all">All Types</option>
+            <option value="all">Job type</option>
             <option value="Fulltime">Full Time</option>
             <option value="Parttime">Part Time</option>
             <option value="Internship">Internship</option>
