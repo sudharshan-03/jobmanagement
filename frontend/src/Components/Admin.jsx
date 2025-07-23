@@ -49,11 +49,10 @@ function Admin() {
         .toLowerCase()
         .includes(filters.location.toLowerCase());
       const typeMatch =
-        filters.jobType === "" ||
-        job.jobType.toLowerCase() === filters.jobType.toLowerCase();
+        filters.jobType === "" || job.jobType === filters.jobType;
 
-      const salaryFrom = parseInt(job.salaryRangeFrom, 10);
-      const salaryTo = parseInt(job.salaryRangeTo, 10);
+      const salaryFrom = parseInt(job.salaryRangeFrom, 10) || 0;
+      const salaryTo = parseInt(job.salaryRangeTo, 10) || 0;
       const [min, max] = filters.salary;
 
       // check if job salary overlaps filter range
