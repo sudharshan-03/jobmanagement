@@ -58,7 +58,7 @@ function Header({ toggle, onFilterChange }) {
           />
         </div>
         <div className="inputs third">
-          <img src={jobtypeIcon} alt="job type icon" />
+          <img src={jobtypeIcon} alt="job type icon" className="jobType" />
           <select
             name="jobType"
             className="custom-select"
@@ -85,12 +85,14 @@ function Header({ toggle, onFilterChange }) {
             value={filters.salary}
             onChange={handleSliderChange}
             min={50000}
-            max={94500} // ₹1.5L per month = ₹18L per year
+            max={100000}
             step={5000}
             sx={{
               color: "#000", // affects thumb, track
               height: 2,
               paddingLeft: "10px",
+              position: "relative",
+              left: "15px",
               "& .MuiSlider-track": {
                 backgroundColor: "#000",
               },

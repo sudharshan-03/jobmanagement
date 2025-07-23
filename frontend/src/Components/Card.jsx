@@ -6,7 +6,7 @@ import build from "../assets/build.svg";
 import salary from "../assets/salary.svg";
 
 function Card({ job }) {
-  const { image, position, salaryRangeTo, description,createdAt } = job;
+  const { image, position, salaryRangeTo, description,createdAt,company } = job;
 
   function getTimeAgo(createdTime) {
     const createdDate = new Date(createdTime);
@@ -35,9 +35,13 @@ function Card({ job }) {
                 .split("/")
                 .pop()}`}
               alt="logo"
+              id={company}
             />
           </div>
-          <div className="time">{getTimeAgo(job.createdAt)}</div>
+          <div className="time">
+            {/* {getTimeAgo(job.createdAt)} */}
+            24h Ago
+          </div>
         </div>
         <h2 className="heading">{position}</h2>
         <div className="details">
