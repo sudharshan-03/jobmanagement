@@ -10,24 +10,23 @@ function Header({ toggle, onFilterChange }) {
   const [filters, setFilters] = useState({
     title: "",
     location: "",
-    jobType: "all", // default to all
+    jobType: "all", // Default all
     salary: [50000, 80000],
   });
 
   const handleSliderChange = (event, newValue) => {
-    const yearlySalary = [newValue[0] * 12, newValue[1] * 12];
-    const updated = { ...filters, salary: newValue };
-    setFilters(updated);
-    onFilterChange({ ...updated, salary: yearlySalary });
+    setFilters((prev) => ({ ...prev, salary: newValue }));
+    onFilterChange({
+      ...filters,
+      salary: [newValue[0], newValue[1]],
+    });
   };
 
   const handleChange = (e) => {
-    const updated = { ...filters, [e.target.name]: e.target.value };
+    const { name, value } = e.target;
+    const updated = { ...filters, [name]: value };
     setFilters(updated);
-    onFilterChange({
-      ...updated,
-      salary: [filters.salary[0] * 12, filters.salary[1] * 12],
-    });
+    onFilterChange(updated);
   };
 
   return (
@@ -50,7 +49,6 @@ function Header({ toggle, onFilterChange }) {
             type="text"
             name="location"
             placeholder="Preferred Location"
-            id="secondInput"
             value={filters.location}
             onChange={handleChange}
           />
@@ -90,12 +88,8 @@ function Header({ toggle, onFilterChange }) {
               paddingLeft: "10px",
               position: "relative",
               left: "15px",
-              "& .MuiSlider-track": {
-                backgroundColor: "#000",
-              },
-              "& .MuiSlider-rail": {
-                backgroundColor: "#ddd",
-              },
+              "& .MuiSlider-track": { backgroundColor: "#000" },
+              "& .MuiSlider-rail": { backgroundColor: "#ddd" },
               "& .MuiSlider-thumb": {
                 boxShadow: "none",
                 backgroundColor: "#fff",
