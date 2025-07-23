@@ -18,7 +18,7 @@ function Admin() {
     try {
       const response = await axiosInstance.get("/jobs");
       setJobs(response.data);
-      setFilteredJobs(response.data);
+      setFilteredJobs(response.data); // initially show all
     } catch (err) {
       console.log(err);
     }
@@ -29,13 +29,13 @@ function Admin() {
   }, [change]);
 
   const handleFilterChange = (filters) => {
-    const isDefaultSalary =
-      filters.salary[0] === 50000 && filters.salary[1] === 80000;
+    const { title, location, jobType, salary } = filters;
+    const isDefaultSalary = salary[0] === 50000 && salary[1] === 80000;
 
     const isEmpty =
-      filters.title.trim() === "" &&
-      filters.location.trim() === "" &&
-      (filters.jobType === "all" || filters.jobType === "") &&
+      title.trim() === "" &&
+      location.trim() === "" &&
+      (jobType === "all" || jobType === "") &&
       isDefaultSalary;
 
     if (isEmpty) {
@@ -46,23 +46,20 @@ function Admin() {
     const filtered = jobs.filter((job) => {
       const titleMatch = job.position
         .toLowerCase()
-        .includes(filters.title.toLowerCase());
+        .includes(title.toLowerCase());
 
       const locationMatch = job.jobLocation
         .toLowerCase()
-        .includes(filters.location.toLowerCase());
+        .includes(location.toLowerCase());
 
       const typeMatch =
-        filters.jobType === "all" || filters.jobType === ""
-          ? true
-          : job.jobType.toLowerCase() === filters.jobType.toLowerCase();
+        jobType === "all" ? true : job.jobType.toLowerCase() === jobType.toLowerCase();
 
       const salaryFrom = parseInt(job.salaryRangeFrom, 10) || 0;
       const salaryTo = parseInt(job.salaryRangeTo, 10) || 0;
-
       const salaryMatch = isDefaultSalary
         ? true
-        : salaryTo >= filters.salary[0] && salaryFrom <= filters.salary[1];
+        : salaryTo >= salary[0] && salaryFrom <= salary[1];
 
       return titleMatch && locationMatch && typeMatch && salaryMatch;
     });
