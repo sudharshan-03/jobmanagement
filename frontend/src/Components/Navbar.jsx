@@ -2,10 +2,10 @@ import React from "react";
 import logo from "../assets/Group.svg";
 import "../styles/navbar.css";
 
-function Navbar({toggle}) {
+function Navbar({ toggle }) {
   const toggleFunction = () => {
     toggle();
-  }
+  };
 
   return (
     <>
@@ -16,11 +16,13 @@ function Navbar({toggle}) {
             <li>Home</li>
             <li>Find Jobs</li>
             <li>Find Talents</li>
-            <li>About Us</li>
+            <li>About us</li>
             <li>Testimonials</li>
           </ul>
-          <button className="createBtn" onClick={toggleFunction}>Create Jobs</button>
         </div>
+        <button className="createBtn" onClick={toggleFunction}>
+          Create Jobs
+        </button>
       </nav>
     </>
   );

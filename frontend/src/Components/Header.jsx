@@ -41,23 +41,22 @@ function Header({ toggle, onFilterChange }) {
           <input
             type="text"
             name="title"
-            placeholder="Search by Job Title, Role"
+            placeholder="Search By Job Title, Role"
             value={filters.title}
             onChange={handleChange}
           />
         </div>
-        <hr />
         <div className="inputs">
           <img src={locationIcon} alt="location icon" />
           <input
             type="text"
             name="location"
             placeholder="Preferred Location"
+            id="secondInput"
             value={filters.location}
             onChange={handleChange}
           />
         </div>
-        <hr />
         <div className="inputs">
           <img src={jobtypeIcon} alt="job type icon" />
           <select
@@ -74,7 +73,6 @@ function Header({ toggle, onFilterChange }) {
             <option value="hybrid">Hybrid</option>
           </select>
         </div>
-        <hr />
         <div className="salaryContainer">
           <div className="salaryHead">
             <p>Salary Per Month</p>
