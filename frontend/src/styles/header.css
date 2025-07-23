@@ -5,15 +5,13 @@ header {
   padding: 21px 0;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
-  gap: 32px;
+  gap: 35px;
 }
 
 .filterContainer {
   padding: 0 63px;
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
   gap: 21px;
 }
 
@@ -38,6 +36,8 @@ hr {
 
 .filterContainer select {
   color: #666;
+  align-self: center;
+  padding: 2px 195px 2px 5px;
 }
 
 .filterContainer input:focus,
@@ -49,13 +49,19 @@ hr {
 .inputs {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 21px;
 }
+
+.third{
+    margin-left: 7px;
+}
+
 
 .salaryContainer {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 9px;
 }
 
 .salaryHead {
@@ -63,7 +69,7 @@ hr {
   color: #222;
   font-size: 16px;
   font-weight: 550;
-  gap: 30px;
+  gap: 50px;
 }
 
 .custom-select {
@@ -72,7 +78,6 @@ hr {
   -moz-appearance: none;
   background-image: url("../assets/down.svg");
   background-repeat: no-repeat;
-  background-position: right 5px center;
-  background-size: 2em;
-  padding-right: 3em;
+  background-position: right 30px center;
+  background-size: 1.5rem;
 }

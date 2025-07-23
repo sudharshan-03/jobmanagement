@@ -12,7 +12,7 @@ function Header({ toggle, onFilterChange }) {
     location: "",
     jobType: "",
     // Monthly salary range: ₹0 to ₹1.5L
-    salary: [0, 150000],
+    salary: [50000, 80000],
   });
 
   const handleSliderChange = (event, newValue) => {
@@ -57,7 +57,7 @@ function Header({ toggle, onFilterChange }) {
             onChange={handleChange}
           />
         </div>
-        <div className="inputs">
+        <div className="inputs third">
           <img src={jobtypeIcon} alt="job type icon" />
           <select
             name="jobType"
@@ -66,7 +66,7 @@ function Header({ toggle, onFilterChange }) {
             onChange={handleChange}
           >
             <option value="" disabled hidden>
-              Job Type
+              Job type
             </option>
             <option value="">Full Time</option>
             <option value="remote">Remote</option>
@@ -84,12 +84,13 @@ function Header({ toggle, onFilterChange }) {
           <Slider
             value={filters.salary}
             onChange={handleSliderChange}
-            min={0}
-            max={150000} // ₹1.5L per month = ₹18L per year
+            min={50000}
+            max={94500} // ₹1.5L per month = ₹18L per year
             step={5000}
             sx={{
               color: "#000", // affects thumb, track
               height: 2,
+              paddingLeft: "10px",
               "& .MuiSlider-track": {
                 backgroundColor: "#000",
               },
