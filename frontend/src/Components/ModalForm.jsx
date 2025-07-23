@@ -176,14 +176,14 @@ function ModalForm({toggle, toggleChange}) {
                 id="salaryFrom"
                 value={formData.salaryFrom}
                 onChange={handleChange}
-                placeholder="₹0"
+                placeholder="&#x21c5;   ₹0"
               />
               <input
                 type="text"
                 id="salaryTo"
                 value={formData.salaryTo}
                 onChange={handleChange}
-                placeholder="₹12,00,000"
+                placeholder="&#x21c5;    ₹12,00,000"
               />
             </div>
             {(errors.salaryFrom || errors.salaryTo) && (

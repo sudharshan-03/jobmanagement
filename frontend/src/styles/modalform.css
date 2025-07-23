@@ -2,19 +2,18 @@
   position: absolute;
   top: 0;
   z-index: 5;
-  width: 100%;
+  width: 1440px;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
-  /* height: 1000%; */
 }
 
 .form {
-  width: 60%;
-  height: fit-content;
+  position: relative;
+  top: -2px;
+  width: 848px; 
   border-radius: 16px;
   background-color: #fff;
-  padding: 30px 40px;
+  padding: 30px 40px 75px;
   margin: 120px 0;
 }
 
@@ -23,7 +22,10 @@
   flex-wrap: wrap;
   width: 100%;
   margin: auto;
-  gap: 1rem;
+  gap: 15px;
+  position: relative;
+  top: 9px;
+  left: 1px;
 }
 
 .form h2 {
@@ -32,7 +34,7 @@
 }
 
 .formInput {
-  width: 48%;
+  width: 49%;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -46,7 +48,7 @@
 
 .formInput input,
 .formInput select {
-  height: 50px;
+  height: 58px;
   border: 1px solid black;
   border-radius: 10px;
   font-family: inherit;
@@ -75,7 +77,7 @@
 }
 
 .salary input {
-  width: 50%;
+  width: 48%;
 }
 
 input[type="date"]::placeholder {
@@ -97,7 +99,8 @@ input[type="date"]::placeholder {
 
 .formTextarea textarea {
   height: 170px;
-  padding: 12px;
+  padding: 15px 16px;
+  font-size: 16px;
   font-family: inherit;
   resize: vertical;
   border: 1px solid black;
@@ -111,7 +114,10 @@ input[type="date"]::placeholder {
 }
 
 .btn-grp button {
-  width: 200px;
+  /* width: 200px; */
+  position: relative;
+  top: 25px;
+  font-size: 20px;
   padding: 16px 60px;
   border-radius: 10px;
   display: flex;
