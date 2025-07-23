@@ -56,6 +56,11 @@
   font-size: 18px;
 }
 
+#deadline{
+  width:100%;
+  background-color: #fff;
+}
+
 .formInput input::placeholder {
   font-size: 16px;
 }
@@ -124,6 +129,7 @@ input[type="date"]::placeholder {
   align-items: center;
   gap: 10px;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .save {

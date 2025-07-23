@@ -33,11 +33,11 @@ function Admin() {
       filters.title.trim() === "" &&
       filters.location.trim() === "" &&
       filters.jobType === "" &&
-      filters.salary[0] === 0 &&
-      filters.salary[1] === 1800000; // 150000 * 12
+      filters.salary[0] === 50000 &&
+      filters.salary[1] === 80000;
 
     if (isEmpty) {
-      setFilteredJobs(jobs); // Show all jobs if filters are cleared
+      setFilteredJobs(jobs);
       return;
     }
 
@@ -56,7 +56,8 @@ function Admin() {
       const salaryTo = parseInt(job.salaryRangeTo, 10);
       const [min, max] = filters.salary;
 
-      const salaryMatch = salaryFrom >= min && salaryTo <= max;
+      // check if job salary overlaps filter range
+      const salaryMatch = salaryTo >= min && salaryFrom <= max;
 
       return titleMatch && locationMatch && typeMatch && salaryMatch;
     });

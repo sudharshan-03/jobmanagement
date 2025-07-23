@@ -11,7 +11,6 @@ function Header({ toggle, onFilterChange }) {
     title: "",
     location: "",
     jobType: "",
-    // Monthly salary range: ₹0 to ₹1.5L
     salary: [50000, 80000],
   });
 
