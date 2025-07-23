@@ -10,27 +10,30 @@ function Header({ toggle, onFilterChange }) {
   const [filters, setFilters] = useState({
     title: "",
     location: "",
-    jobType: "",
-    salary: [50000, 80000], // monthly salary
+    jobType: "all", // default to all
+    salary: [50000, 80000],
   });
 
   const handleSliderChange = (event, newValue) => {
+    const yearlySalary = [newValue[0] * 12, newValue[1] * 12];
     const updated = { ...filters, salary: newValue };
     setFilters(updated);
-    onFilterChange(updated); // send monthly values directly
+    onFilterChange({ ...updated, salary: yearlySalary });
   };
 
   const handleChange = (e) => {
     const updated = { ...filters, [e.target.name]: e.target.value };
     setFilters(updated);
-    onFilterChange(updated);
+    onFilterChange({
+      ...updated,
+      salary: [filters.salary[0] * 12, filters.salary[1] * 12],
+    });
   };
 
   return (
     <header>
       <Navbar toggle={toggle} />
       <div className="filterContainer">
-        {/* Title Filter */}
         <div className="inputs">
           <img src={searchIcon} alt="search icon" />
           <input
@@ -41,8 +44,6 @@ function Header({ toggle, onFilterChange }) {
             onChange={handleChange}
           />
         </div>
-
-        {/* Location Filter */}
         <div className="inputs">
           <img src={locationIcon} alt="location icon" />
           <input
@@ -54,8 +55,6 @@ function Header({ toggle, onFilterChange }) {
             onChange={handleChange}
           />
         </div>
-
-        {/* Job Type Filter */}
         <div className="inputs third">
           <img src={jobtypeIcon} alt="job type icon" className="jobType" />
           <select
@@ -64,17 +63,13 @@ function Header({ toggle, onFilterChange }) {
             value={filters.jobType}
             onChange={handleChange}
           >
-            <option value="">Job type</option>
+            <option value="all">All Types</option>
             <option value="Fulltime">Full Time</option>
             <option value="Parttime">Part Time</option>
             <option value="Internship">Internship</option>
             <option value="Contract">Contract</option>
-            <option value="Remote">Remote</option>
-            <option value="Hybrid">Hybrid</option>
           </select>
         </div>
-
-        {/* Salary Slider */}
         <div className="salaryContainer">
           <div className="salaryHead">
             <p>Salary Per Month</p>
@@ -107,15 +102,6 @@ function Header({ toggle, onFilterChange }) {
                 border: "5px solid black",
                 width: "15px",
                 height: "15px",
-              },
-              "& .MuiSlider-valueLabel": {
-                backgroundColor: "#000",
-              },
-              "& .MuiSlider-thumb:hover": {
-                boxShadow: "none",
-              },
-              "& .MuiSlider-thumb:focus": {
-                boxShadow: "none",
               },
             }}
           />
