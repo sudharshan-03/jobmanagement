@@ -29,12 +29,14 @@ function Admin() {
   }, [change]);
 
   const handleFilterChange = (filters) => {
+    const isDefaultSalary =
+      filters.salary[0] === 50000 && filters.salary[1] === 80000;
+
     const isEmpty =
       filters.title.trim() === "" &&
       filters.location.trim() === "" &&
-      filters.jobType === "" &&
-      filters.salary[0] === 50000 &&
-      filters.salary[1] === 80000;
+      (filters.jobType === "all" || filters.jobType === "") &&
+      isDefaultSalary;
 
     if (isEmpty) {
       setFilteredJobs(jobs);
@@ -45,18 +47,22 @@ function Admin() {
       const titleMatch = job.position
         .toLowerCase()
         .includes(filters.title.toLowerCase());
+
       const locationMatch = job.jobLocation
         .toLowerCase()
         .includes(filters.location.toLowerCase());
+
       const typeMatch =
-        filters.jobType === "" || job.jobType === filters.jobType;
+        filters.jobType === "all" || filters.jobType === ""
+          ? true
+          : job.jobType.toLowerCase() === filters.jobType.toLowerCase();
 
       const salaryFrom = parseInt(job.salaryRangeFrom, 10) || 0;
       const salaryTo = parseInt(job.salaryRangeTo, 10) || 0;
-      const [min, max] = filters.salary;
 
-      // check if job salary overlaps filter range
-      const salaryMatch = salaryTo >= min && salaryFrom <= max;
+      const salaryMatch = isDefaultSalary
+        ? true
+        : salaryTo >= filters.salary[0] && salaryFrom <= filters.salary[1];
 
       return titleMatch && locationMatch && typeMatch && salaryMatch;
     });
