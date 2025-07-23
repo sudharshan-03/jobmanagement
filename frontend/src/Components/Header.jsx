@@ -10,25 +10,23 @@ function Header({ toggle, onFilterChange }) {
   const [filters, setFilters] = useState({
     title: "",
     location: "",
-    jobType: "",
+    jobType: "all", // Default all
     salary: [50000, 80000],
   });
 
   const handleSliderChange = (event, newValue) => {
-    // Convert monthly salary to yearly for the backend
-    const yearlySalary = [newValue[0] * 12, newValue[1] * 12];
-    const updated = { ...filters, salary: newValue };
-    setFilters(updated);
-    onFilterChange({ ...filters, salary: yearlySalary });
+    setFilters((prev) => ({ ...prev, salary: newValue }));
+    onFilterChange({
+      ...filters,
+      salary: [newValue[0], newValue[1]],
+    });
   };
 
   const handleChange = (e) => {
-    const updated = { ...filters, [e.target.name]: e.target.value };
+    const { name, value } = e.target;
+    const updated = { ...filters, [name]: value };
     setFilters(updated);
-    onFilterChange({
-      ...updated,
-      salary: [filters.salary[0] * 12, filters.salary[1] * 12],
-    });
+    onFilterChange(updated);
   };
 
   return (
@@ -51,9 +49,9 @@ function Header({ toggle, onFilterChange }) {
             type="text"
             name="location"
             placeholder="Preferred Location"
-            id="secondInput"
             value={filters.location}
             onChange={handleChange}
+            id="secondInput"
           />
         </div>
         <div className="inputs third">
@@ -64,12 +62,11 @@ function Header({ toggle, onFilterChange }) {
             value={filters.jobType}
             onChange={handleChange}
           >
-            <option value="" disabled hidden>
-              Job type
-            </option>
-            <option value="">Full Time</option>
-            <option value="remote">Remote</option>
-            <option value="hybrid">Hybrid</option>
+            <option value="all">Job type</option>
+            <option value="Fulltime">Full Time</option>
+            <option value="Parttime">Part Time</option>
+            <option value="Internship">Internship</option>
+            <option value="Contract">Contract</option>
           </select>
         </div>
         <div className="salaryContainer">
@@ -87,32 +84,19 @@ function Header({ toggle, onFilterChange }) {
             max={100000}
             step={5000}
             sx={{
-              color: "#000", // affects thumb, track
+              color: "#000",
               height: 2,
               paddingLeft: "10px",
               position: "relative",
               left: "15px",
-              "& .MuiSlider-track": {
-                backgroundColor: "#000",
-              },
-              "& .MuiSlider-rail": {
-                backgroundColor: "#ddd",
-              },
+              "& .MuiSlider-track": { backgroundColor: "#000" },
+              "& .MuiSlider-rail": { backgroundColor: "#ddd" },
               "& .MuiSlider-thumb": {
                 boxShadow: "none",
                 backgroundColor: "#fff",
                 border: "5px solid black",
                 width: "15px",
                 height: "15px",
-              },
-              "& .MuiSlider-valueLabel": {
-                backgroundColor: "#000",
-              },
-              "& .MuiSlider-thumb:hover": {
-                boxShadow: "none",
-              },
-              "& .MuiSlider-thumb:focus": {
-                boxShadow: "none",
               },
             }}
           />
